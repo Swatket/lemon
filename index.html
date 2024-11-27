@@ -3,13 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
-    <link rel="stylesheet" href="quiz.css">
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.8.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.8.1/firebase-database.js"></script>
+    <title>Quiz Categories</title>
+    <link rel="stylesheet" href="index.css">
     <style>
-        /* General Styles */
+        /* General Styling */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -21,105 +18,66 @@
             background-color: #f4f4f4;
         }
 
+        .homepage-container {
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
         h1 {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 20px;
         }
 
-        .progress-bar-container {
-            width: 100%;
-            background-color: #f3f3f3;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 20px 0;
+        .category-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* Add space between buttons */
         }
 
-        .progress-bar {
-            width: 0%;
-            height: 15px;
-            background-color: #4caf50;
-            border-radius: 10px;
-            transition: width 0.3s;
-        }
-
-        .question-container {
-            margin-top: 20px;
-        }
-
-        .question-image {
-            width: 100%;
-            height: auto;
-            max-height: 300px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-        }
-
-        .question-text {
-            font-size: 20px;
-            margin-bottom: 20px;
-        }
-
-        .answer-button {
+        .category-button {
             display: block;
             width: 100%;
-            max-width: 300px;
-            margin: 10px auto;
-            padding: 12px;
-            font-size: 16px;
-            text-align: center;
-            border: 2px solid #ddd;
-            border-radius: 25px;
-            background-color: #f9f9f9;
-            color: #333;
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
-        }
-
-        .answer-button:hover {
-            background-color: #e0e0e0;
-            border-color: #ccc;
-        }
-
-        .summary-image {
-            display: none;
-            max-width: 100%;
-            max-height: 300px;
-            margin: 20px 0;
-            border-radius: 10px;
-        }
-
-        #backToHome {
-            display: none;
-            padding: 12px 20px;
+            padding: 15px;
             font-size: 18px;
             background-color: #4caf50;
-            color: #fff;
+            color: white;
             border: none;
-            border-radius: 10px;
+            border-radius: 25px;
             cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            box-sizing: border-box;
         }
 
-        #backToHome:hover {
+        .category-button:hover {
             background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <div class="quiz-container" id="quizContainer">
-        <h1 id="categoryTitle">Category: </h1>
-        <div class="progress-bar-container" id="progressBarContainer">
-            <div class="progress-bar" id="progressBar"></div>
+    <div class="homepage-container">
+        <h1>Choose a Category</h1>
+        <div class="category-buttons">
         </div>
-        <div class="question-container">
-            <img id="questionImage" class="question-image" src="" alt="Question Image">
-            <div id="question" class="question-text">Question will appear here</div>
-            <button onclick="selectAnswer(0)" id="optionA" class="answer-button">Option A</button>
-            <button onclick="selectAnswer(1)" id="optionB" class="answer-button">Option B</button>
-        </div>
-        <img id="summaryImage" class="summary-image" src="" alt="Summary Image">
-        <button id="backToHome" onclick="goBackToHome()">Back to Homepage</button>
     </div>
-    <script src="quiz.js"></script>
+    <script>
+        // Array of categories
+        const categories = ["Science", "History", "Technology","DSADAS"];
+
+        const container = document.querySelector('.category-buttons');
+        categories.forEach(category => {
+            const button = document.createElement('a');
+            button.href = `quiz.html?category=${category.toLowerCase()}`;
+            button.className = 'category-button';
+            button.innerText = category;
+            container.appendChild(button);
+        });
+    </script>
 </body>
 </html>

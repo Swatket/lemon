@@ -16,64 +16,19 @@ const database = firebase.database();
 
 const categories = {
     science: [
-        {
-            question: "Is the sky blue?",
-            options: ["Yes", "No"],
-            correctAnswer: 0,
-            image: "flame.jpeg"
-        },
-        {
-            question: "Is grass green?",
-            options: ["Yes", "No"],
-            correctAnswer: 0,
-            image: "grass.jpg"
-        },
-        {
-            question: "Is fire cold?",
-            options: ["Yes", "No"],
-            correctAnswer: 1,
-            image: "fire.jpg"
-        }
+        { question: "Is the sky blue?", options: ["Yes", "No"], correctAnswer: 0, image: "flame.jpeg" },
+        { question: "Is grass green?", options: ["Yes", "No"], correctAnswer: 0, image: "grass.jpg" },
+        { question: "Is fire cold?", options: ["Yes", "No"], correctAnswer: 1, image: "fire.jpg" }
     ],
     history: [
-        {
-            question: "Who discovered America?",
-            options: ["Christopher Columbus", "Marco Polo"],
-            correctAnswer: 0,
-            image: "columbus.jpg"
-        },
-        {
-            question: "When was the Declaration of Independence signed?",
-            options: ["1776", "1783"],
-            correctAnswer: 0,
-            image: "declaration.jpg"
-        },
-        {
-            question: "What was the name of the first President of the US?",
-            options: ["George Washington", "Abraham Lincoln"],
-            correctAnswer: 0,
-            image: "washington.jpg"
-        }
+        { question: "Who discovered America?", options: ["Christopher Columbus", "Marco Polo", "Leif Erikson"], correctAnswer: 0, image: "columbus.jpg" },
+        { question: "When was the Declaration of Independence signed?", options: ["1776", "1783"], correctAnswer: 0, image: "declaration.jpg" },
+        { question: "What was the name of the first President of the US?", options: ["George Washington", "Abraham Lincoln"], correctAnswer: 0, image: "washington.jpg" }
     ],
     technology: [
-        {
-            question: "What does CPU stand for?",
-            options: ["Central Processing Unit", "Computer Processing Unit"],
-            correctAnswer: 0,
-            image: "cpu.jpg"
-        },
-        {
-            question: "What is the name of the first computer?",
-            options: ["ENIAC", "UNIVAC"],
-            correctAnswer: 0,
-            image: "eniac.jpg"
-        },
-        {
-            question: "Which company created the iPhone?",
-            options: ["Apple", "Samsung"],
-            correctAnswer: 0,
-            image: "iphone.jpg"
-        }
+        { question: "What does CPU stand for?", options: ["Central Processing Unit", "Computer Processing Unit"], correctAnswer: 0, image: "cpu.jpg" },
+        { question: "What is the name of the first computer?", options: ["ENIAC", "UNIVAC"], correctAnswer: 0, image: "eniac.jpg" },
+        { question: "Which company created the iPhone?", options: ["Apple", "Samsung", "Huawei"], correctAnswer: 0, image: "iphone.jpg" }
     ]
 };
 
@@ -94,18 +49,31 @@ if (category && categories[category]) {
 // Function to load the question
 function loadQuestion() {
     const questionData = selectedCategory[currentQuestionIndex];
-    document.getElementById('categoryTitle').innerText = `Category: ${category}`;
+    document.getElementById('categoryTitle').innerText = `Category: ${category.charAt(0).toUpperCase() + category.slice(1)}`;
     document.getElementById('questionImage').src = questionData.image;
     document.getElementById('question').innerText = questionData.question;
-    document.getElementById('optionA').innerText = questionData.options[0];
-    document.getElementById('optionB').innerText = questionData.options[1];
+
+    // Clear previous options
+    const optionsContainer = document.getElementById('optionsContainer');
+    optionsContainer.innerHTML = ''; // Clear existing options
+
+    // Dynamically create buttons for each option
+    questionData.options.forEach((option, index) => {
+        console.log(`Creating option: ${option}`);
+        const button = document.createElement('button');
+        button.innerText = option;
+        button.onclick = () => selectAnswer(index);
+        button.className = 'answer-button';
+        optionsContainer.appendChild(button);
+    });
+
     updateProgressBar();
 }
 
 // Function to update the progress bar
 function updateProgressBar() {
     const progressBar = document.getElementById('progressBar');
-    const progressPercentage = ((currentQuestionIndex + 1) / selectedCategory.length) * 100;
+    const progressPercentage = Math.min(((currentQuestionIndex + 1) / selectedCategory.length) * 100, 100);
     progressBar.style.width = progressPercentage + '%';
 }
 
@@ -126,8 +94,7 @@ function selectAnswer(selectedIndex) {
 function endQuiz() {
     document.getElementById('questionImage').style.display = "none";
     document.getElementById('question').style.display = "none";
-    document.getElementById('optionA').style.display = "none";
-    document.getElementById('optionB').style.display = "none";
+    document.getElementById('optionsContainer').style.display = "none";
     document.getElementById('progressBarContainer').style.display = "none";
 
     const summaryImage = document.getElementById('summaryImage');
@@ -141,23 +108,9 @@ function endQuiz() {
     saveScoreToFirebase();
 }
 
-// Function to save score data to Firebase
+// Function to save score to Firebase
 function saveScoreToFirebase() {
-    const userScoreRef = database.ref('scores/' + category);
-    userScoreRef.push({
+    const scoreData = {
         score: score,
-        date: new Date().toISOString()
-    });
-
-    // Optionally, you could update visitor count for the category
-    const visitorRef = database.ref('visitorCount/' + category);
-    visitorRef.transaction(currentCount => (currentCount || 0) + 1);
-}
-
-// Function to go back to the homepage
-function goBackToHome() {
-    window.location.href = "index.html";
-}
-
-// Initialize the first question
-loadQuestion();
+        category: category,
+        date: new Date().toLocaleString()}}

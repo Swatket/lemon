@@ -141,6 +141,15 @@ function submitFinalScore() {
   submitButton.disabled = true;
   submitButton.innerText = "Submitting...";
 
+  // Get the current date
+  const date = new Date().toISOString().slice(0, 10); // Format: YYYY-MM-DD
+
+  // Create the score data object
+  const scoreData = {
+    score: score,
+    userAnswers: userAnswers // Include user answers if needed
+  };
+
   const scoreRef = firebase.database().ref(`scores/${category}/${username}/${date}`);
   scoreRef.set(scoreData)
     .then(() => {

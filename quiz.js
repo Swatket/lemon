@@ -133,6 +133,12 @@ const firebaseConfig = {
   appId: "1:462220315312:web:c5b718b2bb65ee19820975",
 }
 
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Get a reference to the Cloud Firestore database
+const db = firebase.firestore();
+
 function submitFinalScore() {
   console.log("Submitting data...");
   console.log("Score data: ", scoreData);
@@ -147,18 +153,36 @@ function submitFinalScore() {
   // Create the score data object
   const scoreData = {
     score: score,
-    userAnswers: userAnswers // Include user answers if needed
+    userAnswers: userAnswers, // Include user answers if needed
+    category: category, // Assuming you have a category variable
+    username: username, // Assuming you have a username variable
+    date: date
   };
 
-  const scoreRef = firebase.database().ref(`scores/${category}/${username}/${date}`);
-  scoreRef.set(scoreData)
+  // Get a reference to the Realtime Database
+  const database = firebase.database();
+
+  // Add the score data to the "scores" node in the Realtime Database
+  database.ref(`scores/${category}/${username}/${date}`).set(scoreData)
     .then(() => {
       console.log("Data written successfully!");
       alert("Your final score has been submitted!");
     })
     .catch((error) => {
       console.error("Error submitting data:", error);
-      submitButton.disabled = false; 
+      submitButton.disabled = false;
+      submitButton.innerText = "Submit Final Score";
+    });
+
+  // Add the score data to the "scores" collection in Cloud Firestore
+  db.collection("scores").add(scoreData)
+    .then((docRef) => {
+      console.log("Data written successfully! Document ID:", docRef.id);
+      alert("Your final score has been submitted!");
+    })
+    .catch((error) => {
+      console.error("Error submitting data:", error);
+      submitButton.disabled = false;
       submitButton.innerText = "Submit Final Score";
     });
 }

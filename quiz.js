@@ -137,11 +137,11 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 // Get a reference to the Cloud Firestore database
-const db = firebase.firestore();
+const db = firebase.database();
 
 function submitFinalScore() {
   console.log("Submitting data...");
-  console.log("Score data: ", scoreData);
+  console.log("Score data: ", score);
 
   const submitButton = document.getElementById('submitButton');
   submitButton.disabled = true;

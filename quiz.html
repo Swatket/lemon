@@ -6,7 +6,6 @@
     <title>Quiz</title>
     <link rel="stylesheet" href="quiz.css">
     <style>
-        /* General Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -100,6 +99,21 @@
         #backToHome:hover {
             background-color: #45a049;
         }
+
+        #submitButton {
+            display: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #submitButton:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
@@ -117,7 +131,12 @@
         </div>
         <img id="summaryImage" class="summary-image" src="" alt="Summary Image">
         <button id="backToHome" onclick="goBackToHome()">Back to Homepage</button>
+        <button id="submitButton" onclick="submitFinalScore()">Submit Final Score</button>
     </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script src="quiz.js"></script>
 </body>
 </html>

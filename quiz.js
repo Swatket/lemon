@@ -1,4 +1,3 @@
-// Your quiz categories
 const categories = {
   science: [
     {
@@ -33,8 +32,8 @@ const categories = {
 let currentQuestionIndex = 0;
 let score = 0;
 let selectedCategory = [];
-let userAnswers = [];  // Track user answers
-let username = '';  // Assume you prompt for the username or get it dynamically
+let userAnswers = [];
+let username = '';
 
 const urlParams = new URLSearchParams(window.location.search);
 const category = urlParams.get('category');
@@ -46,17 +45,14 @@ if (category && categories[category]) {
   window.location.href = "index.html";
 }
 
-// Get username from prompt (or use a better method like Firebase Authentication in real apps)
 username = prompt("Enter your name to start the quiz:");
 
-// Function to load a question
 function loadQuestion() {
   const questionData = selectedCategory[currentQuestionIndex];
   document.getElementById('categoryTitle').innerText = `Category: ${category}`;
   document.getElementById('questionImage').src = questionData.image;
   document.getElementById('question').innerText = questionData.question;
 
-  // Clear existing answer buttons
   const answerContainer = document.getElementById('answerContainer');
   answerContainer.innerHTML = '';
 
@@ -65,14 +61,13 @@ function loadQuestion() {
     const button = document.createElement('button');
     button.innerText = option;
     button.classList.add('answer-button');
-    button.onclick = () => selectAnswer(index);  // Attach event listener
+    button.onclick = () => selectAnswer(index);
     answerContainer.appendChild(button);
   });
 
   updateProgressBar();
 }
 
-// Function to select an answer
 function selectAnswer(selectedIndex) {
   const questionData = selectedCategory[currentQuestionIndex];
   const isCorrect = selectedIndex === questionData.correctAnswer;
@@ -97,7 +92,6 @@ function selectAnswer(selectedIndex) {
   }
 }
 
-// Update progress bar
 function updateProgressBar() {
   const progressBar = document.getElementById('progressBar');
   const progressPercentage = ((currentQuestionIndex + 1) / selectedCategory.length) * 100;
@@ -112,7 +106,7 @@ function endQuiz() {
   document.getElementById('progressBarContainer').style.display = "none";
 
   const summaryImage = document.getElementById('summaryImage');
-  summaryImage.src = score === selectedCategory.length ? "perfect.jpg" : score >= 2 ? "good.jpg" : "better-luck.jpg";
+  summaryImage.src = score === selectedCategory.length ? "perfect.gif" : score >= 1 ? "good.jpg" : "better_luck.png";
   summaryImage.style.display = "block";
 
   const backToHomeButton = document.getElementById('backToHome');
@@ -123,15 +117,12 @@ function endQuiz() {
   submitButton.style.display = "inline-block";
 }
 
-// Go back to the homepage
 function goBackToHome() {
   window.location.href = "index.html";
 }
 
-// Initialize the first question
 loadQuestion();
 
-// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDvvtAbai-8jUyk3bZa2jaeUzGbtLnIDvc",
   authDomain: "lemon-d3604.firebaseapp.com",
@@ -143,8 +134,8 @@ const firebaseConfig = {
 }
 
 function submitFinalScore() {
-  console.log("Submitting data...");  // Log submission attempt
-  console.log("Score data: ", scoreData);  // Log data being sent to Firebase
+  console.log("Submitting data...");
+  console.log("Score data: ", scoreData);
 
   const submitButton = document.getElementById('submitButton');
   submitButton.disabled = true;
@@ -158,7 +149,7 @@ function submitFinalScore() {
     })
     .catch((error) => {
       console.error("Error submitting data:", error);
-      submitButton.disabled = false;  // Re-enable button in case of error
+      submitButton.disabled = false; 
       submitButton.innerText = "Submit Final Score";
     });
 }

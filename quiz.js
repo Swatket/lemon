@@ -1,32 +1,254 @@
 const categories = {
-  science: [
-    {
-      question: "Is the sky blue?",
-      options: ["Yes", "No"],
-      correctAnswer: 0,
-      image: "flame.jpeg"
-    },
-    {
-      question: "What is the chemical symbol for water?",
-      options: ["H2O", "O2", "CO2"],
-      correctAnswer: 0,
-      image: "water.jpg"
-    }
+    garbage: [
+      {
+        question: "Why is it important to sort garbage before disposal?",
+        options: ["It reduces environmental pollution.", "It takes more time to do so.", "It helps to reuse materials."],
+        correctAnswer: 0,
+        image: ""
+      },
+      {
+        question: "What should go into a recycling bin?",
+        options: ["Paper", "Food scraps", "Plastic bottles"],
+        correctAnswer: 2,
+        image: ""
+      },
+      {
+        question: "Which of these should go into the compost bin?",
+        options: ["Fruit and vegetable peels", "Glass bottles", "Meat scraps"],
+        correctAnswer: 0,
+        image: ""
+      },
+      {
+        question: "Where should you dispose of electronic waste, like old phones or computers?",
+        options: ["General trash bin", "E-waste collection center", "Recycling bin", "Hazardous waste facility"],
+        correctAnswer: 1,
+        image: ""
+      },
+      {
+        question: "What happens when recyclable materials are mixed with non-recyclables?",
+        options: ["They are still processed together.", "The recycling process becomes less efficient.", "The non-recyclables contaminate the recyclable materials."],
+        correctAnswer: 1,
+        image: ""
+      },
+      {
+        question: "Which material should be discarded as hazardous waste?",
+        options: ["Batteries", "Fruit peels", "Plastic bags"],
+        correctAnswer: 0,
+        image: ""
+      },
+      {
+        question: "Why is it beneficial to use reusable containers?",
+        options: ["They help reduce waste.", "They cost more than disposable containers."],
+        correctAnswer: 0,
+        image: ""
+      },
+      {
+        question: "Why should glass and plastic be separated when recycling?",
+        options: ["They are processed differently for recycling.", "It makes the recycling process easier.", "It helps prevent contamination."],
+        correctAnswer: 0,
+        image: ""
+      }
   ],
-  history: [
-    {
-      question: "Is the sky blue?",
-      options: ["Yes", "No"],
-      correctAnswer: 0,
-      image: "flame.jpeg"
-    },
-    {
-      question: "What is the chemical symbol for water?",
-      options: ["H2O", "O2", "CO2"],
-      correctAnswer: 0,
-      image: "water.jpg"
-    }
-  ]
+    tree: [
+      {
+        question: "Why is conserving trees important?",
+        options: ["They provide oxygen.", "They consume too much water.", "They attract pests."],
+        correctAnswer: 0,
+        image: ""
+      },
+      {
+        question: "What can you do to help conserve trees?",
+        options: ["Plant more trees", "Cut down old trees", "Ignore the issue"],
+        correctAnswer: 0,
+        image: ""
+      },
+      {
+        question: "Which of these activities contributes to deforestation?",
+        options: ["Logging for timber", "Recycling paper", "Using reusable bags"],
+        correctAnswer: 0,
+        image: ""
+      },
+      {
+        question: "What is the impact of deforestation on wildlife?",
+        options: ["It creates more habitats", "It destroys natural habitats", "It has no effect on wildlife"],
+        correctAnswer: 1,
+        image: ""
+      },
+      {
+        question: "How do trees help in combating climate change?",
+        options: ["They absorb carbon dioxide", "They release methane", "They create smog"],
+        correctAnswer: 0,
+        image: ""
+      },
+      {
+        question: "What is a benefit of planting trees in urban areas?",
+        options: ["Increases pollution", "Provides shade and reduces heat", "Decreases water retention"],
+        correctAnswer: 1,
+        image: ""
+      },
+      {
+        question: "What should you do to reduce paper waste and conserve trees?",
+        options: ["Use more paper products", "Recycle paper", "Burn paper waste"],
+        correctAnswer: 1,
+        image: ""
+      },
+      {
+        question: "How does tree conservation benefit humans?",
+        options: ["It improves air quality", "It reduces water availability", "It increases waste production"],
+        correctAnswer: 0,
+        image: ""
+      }
+    ],
+      water: [
+        {
+          question: "What is one major cause of water pollution?",
+          options: ["Industrial waste", "Clean water runoff", "Ocean currents"],
+          correctAnswer: 0,
+          image: ""
+        },
+        {
+          question: "What can be done to prevent waste pollution in water bodies?",
+          options: ["Dumping waste into rivers", "Proper waste disposal and recycling", "Ignoring pollution issues"],
+          correctAnswer: 1,
+          image: ""
+        },
+        {
+          question: "Which of the following is a common pollutant found in water?",
+          options: ["Plastic waste", "Oxygen", "Clean sand"],
+          correctAnswer: 0,
+          image: ""
+        },
+        {
+          question: "How does waste pollution affect aquatic life?",
+          options: ["It provides food for marine animals", "It can harm or kill aquatic organisms", "It improves water quality"],
+          correctAnswer: 1,
+          image: ""
+        },
+        {
+          question: "What is a major source of land-based pollution that affects water quality?",
+          options: ["Factory emissions", "Waste from landfills", "Ocean currents"],
+          correctAnswer: 1,
+          image: ""
+        },
+        {
+          question: "Which of the following is a consequence of untreated sewage being released into water bodies?",
+          options: ["Improved water quality", "Spread of diseases", "Increase in biodiversity"],
+          correctAnswer: 1,
+          image: ""
+        },
+        {
+          question: "What is a practical way to reduce water pollution?",
+          options: ["Use of chemical detergents", "Proper waste management", "Increasing industrial waste"],
+          correctAnswer: 1,
+          image: ""
+        },
+        {
+          question: "Why is it important to reduce plastic waste in water?",
+          options: ["Plastic is biodegradable", "Plastic can harm marine animals and ecosystems", "Plastic improves water clarity"],
+          correctAnswer: 1,
+          image: ""
+        }
+      ],
+        air: [
+          {
+            question: "What is the main cause of air pollution?",
+            options: ["Industrial emissions", "Fresh air", "Clean water"],
+            correctAnswer: 0,
+            image: ""
+          },
+          {
+            question: "Which of the following is a harmful gas released into the air by vehicles?",
+            options: ["Oxygen", "Carbon monoxide", "Nitrogen"],
+            correctAnswer: 1,
+            image: ""
+          },
+          {
+            question: "How does air pollution affect human health?",
+            options: ["It improves lung function", "It causes respiratory problems", "It has no effect on health"],
+            correctAnswer: 1,
+            image: ""
+          },
+          {
+            question: "Which of these is a consequence of poor air quality?",
+            options: ["Increase in plant growth", "Acid rain", "Lowered ozone levels"],
+            correctAnswer: 1,
+            image: ""
+          },
+          {
+            question: "How can air pollution be reduced in cities?",
+            options: ["Using more fossil fuels", "Using cleaner energy sources and public transport", "Cutting down trees"],
+            correctAnswer: 1,
+            image: ""
+          },
+          {
+            question: "What is smog?",
+            options: ["A type of fog", "A mixture of smoke and fog", "Clean air"],
+            correctAnswer: 1,
+            image: ""
+          },
+          {
+            question: "Which activity contributes the most to air pollution?",
+            options: ["Burning fossil fuels", "Growing plants", "Using electric cars"],
+            correctAnswer: 0,
+            image: ""
+          },
+          {
+            question: "What can individuals do to reduce air pollution?",
+            options: ["Drive more often", "Use less electricity", "Burn more fossil fuels"],
+            correctAnswer: 1,
+            image: ""
+          }
+        ],
+          stray_animal: [
+            {
+              question: "What is one of the main causes of the stray animal population?",
+              options: ["Overpopulation of animals", "Proper pet care", "Strict animal control laws"],
+              correctAnswer: 0,
+              image: ""
+            },
+            {
+              question: "What should be done to help reduce the number of stray animals?",
+              options: ["Adopt animals from shelters", "Ignore the issue", "Increase animal abandonment"],
+              correctAnswer: 0,
+              image: ""
+            },
+            {
+              question: "How can stray animals affect local ecosystems?",
+              options: ["They help maintain balance", "They can spread diseases", "They don’t have any impact"],
+              correctAnswer: 1,
+              image: ""
+            },
+            {
+              question: "What is a common problem caused by stray dogs in urban areas?",
+              options: ["Decreased traffic", "Increased noise and waste", "Improved local sanitation"],
+              correctAnswer: 1,
+              image: ""
+            },
+            {
+              question: "How can spaying and neutering help control the stray animal population?",
+              options: ["It increases the number of stray animals", "It prevents animals from reproducing", "It causes more animals to become homeless"],
+              correctAnswer: 1,
+              image: ""
+            },
+            {
+              question: "Which of the following is a risk associated with stray animals?",
+              options: ["Higher rates of adoption", "Spread of rabies and other diseases", "Better hygiene conditions in shelters"],
+              correctAnswer: 1,
+              image: ""
+            },
+            {
+              question: "What is one way to help a stray animal you find?",
+              options: ["Ignore it", "Take it to an animal shelter", "Leave it on the street"],
+              correctAnswer: 1,
+              image: ""
+            },
+            {
+              question: "What is a key factor in preventing animals from becoming strays?",
+              options: ["Proper pet ownership and care", "Abandoning pets when they become old", "Ignoring animal welfare issues"],
+              correctAnswer: 0,
+              image: ""
+            }
+          ]        
 };
 
 let currentQuestionIndex = 0;
@@ -133,10 +355,8 @@ const firebaseConfig = {
   appId: "1:462220315312:web:c5b718b2bb65ee19820975",
 }
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-// Get a reference to the Cloud Firestore database
 const db = firebase.database();
 
 function submitFinalScore() {
@@ -153,13 +373,12 @@ function submitFinalScore() {
   // Create the score data object
   const scoreData = {
     score: score,
-    userAnswers: userAnswers, // Include user answers if needed
-    category: category, // Assuming you have a category variable
-    username: username, // Assuming you have a username variable
+    userAnswers: userAnswers,
+    category: category,
+    username: username,
     date: date
   };
 
-  // Get a reference to the Realtime Database
   const database = firebase.database();
 
   // Add the score data to the "scores" node in the Realtime Database

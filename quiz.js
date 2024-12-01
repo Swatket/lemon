@@ -248,7 +248,108 @@ const categories = {
               correctAnswer: 0,
               image: ""
             }
-          ]        
+          ],
+            green_energy: [
+              {
+                question: "What is green energy?",
+                options: ["Energy from renewable resources", "Energy from coal", "Energy from nuclear power"],
+                correctAnswer: 0,
+                image: ""
+              },
+              {
+                question: "Which of the following is an example of green energy?",
+                options: ["Solar power", "Oil drilling", "Burning fossil fuels"],
+                correctAnswer: 0,
+                image: ""
+              },
+              {
+                question: "How does using green energy benefit the environment?",
+                options: ["Reduces pollution", "Increases carbon emissions", "Destroys ecosystems"],
+                correctAnswer: 0,
+                image: ""
+              },
+              {
+                question: "What is a common drawback of some green energy sources?",
+                options: ["High initial cost", "They are non-renewable", "They increase air pollution"],
+                correctAnswer: 0,
+                image: ""
+              },
+              {
+                question: "Which energy source is considered the cleanest?",
+                options: ["Coal", "Wind energy", "Natural gas"],
+                correctAnswer: 1,
+                image: ""
+              },
+              {
+                question: "What is a major advantage of solar energy?",
+                options: ["It is available only at night", "It is infinite and sustainable", "It emits harmful gases"],
+                correctAnswer: 1,
+                image: ""
+              },
+              {
+                question: "What type of energy does a hydroelectric power plant use?",
+                options: ["Wind", "Water", "Natural gas"],
+                correctAnswer: 1,
+                image: ""
+              },
+              {
+                question: "How can individuals support green energy initiatives?",
+                options: ["Install solar panels", "Burn more coal", "Ignore energy conservation"],
+                correctAnswer: 0,
+                image: ""
+              }
+            ],
+              soil: [
+                {
+                  question: "What is soil primarily composed of?",
+                  options: ["Minerals, organic matter, and water", "Pure sand", "Only rocks"],
+                  correctAnswer: 0,
+                  image: ""
+                },
+                {
+                  question: "Why is soil important for plants?",
+                  options: ["It provides nutrients and support", "It blocks sunlight", "It prevents water absorption"],
+                  correctAnswer: 0,
+                  image: ""
+                },
+                {
+                  question: "What can cause soil erosion?",
+                  options: ["Deforestation", "Planting more trees", "Using organic fertilizers"],
+                  correctAnswer: 0,
+                  image: ""
+                },
+                {
+                  question: "How can soil fertility be improved?",
+                  options: ["Adding organic compost", "Removing all vegetation", "Using only synthetic chemicals"],
+                  correctAnswer: 0,
+                  image: ""
+                },
+                {
+                  question: "What is one major pollutant of soil?",
+                  options: ["Plastic waste", "Clean water", "Natural compost"],
+                  correctAnswer: 0,
+                  image: ""
+                },
+                {
+                  question: "Which soil type is best for growing crops?",
+                  options: ["Clay soil", "Loamy soil", "Sandy soil"],
+                  correctAnswer: 1,
+                  image: ""
+                },
+                {
+                  question: "How can farmers prevent soil degradation?",
+                  options: ["Practicing crop rotation", "Overusing pesticides", "Removing topsoil"],
+                  correctAnswer: 0,
+                  image: ""
+                },
+                {
+                  question: "Why is soil conservation important?",
+                  options: ["To maintain fertile land", "To increase soil erosion", "To reduce vegetation growth"],
+                  correctAnswer: 0,
+                  image: ""
+                }
+              ]
+                
 };
 
 let currentQuestionIndex = 0;
@@ -320,30 +421,41 @@ function updateProgressBar() {
   progressBar.style.width = progressPercentage + '%';
 }
 
-// End quiz and show summary
 function endQuiz() {
   document.getElementById('questionImage').style.display = "none";
   document.getElementById('question').style.display = "none";
   document.getElementById('answerContainer').style.display = "none";
   document.getElementById('progressBarContainer').style.display = "none";
 
+  const quizContainer = document.getElementById('quizContainer');
+  
+  // Show the score summary
+  const scoreSummary = document.createElement('div');
+  scoreSummary.style.textAlign = "center";
+  scoreSummary.innerHTML = `
+    <p>You scored <strong>${score}</strong> out of <strong>${selectedCategory.length}</strong>.</p>
+  `;
+  quizContainer.appendChild(scoreSummary);
+
+  // Show the feedback image
   const summaryImage = document.getElementById('summaryImage');
   summaryImage.src = score === selectedCategory.length ? "perfect.gif" : score >= 1 ? "good.jpg" : "better_luck.png";
   summaryImage.style.display = "block";
 
+  // Show navigation buttons
   const backToHomeButton = document.getElementById('backToHome');
   backToHomeButton.style.display = "inline-block";
 
-  // Show the submit button
   const submitButton = document.getElementById('submitButton');
   submitButton.style.display = "inline-block";
 }
 
+
+loadQuestion();
+
 function goBackToHome() {
   window.location.href = "index.html";
 }
-
-loadQuestion();
 
 const firebaseConfig = {
   apiKey: "AIzaSyDvvtAbai-8jUyk3bZa2jaeUzGbtLnIDvc",
@@ -367,10 +479,8 @@ function submitFinalScore() {
   submitButton.disabled = true;
   submitButton.innerText = "Submitting...";
 
-  // Get the current date
   const date = new Date().toISOString().slice(0, 10); // Format: YYYY-MM-DD
 
-  // Create the score data object
   const scoreData = {
     score: score,
     userAnswers: userAnswers,

@@ -6,15 +6,19 @@
     <title>Quiz</title>
     <link rel="stylesheet" href="quiz.css">
     <style>
+        @font-face {
+            font-family: 'brush';
+            src: url('fonts/MgBrushVersion2Regular.otf');
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'brush';
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f4f4f4;
         }
 
         h1 {
@@ -48,12 +52,10 @@
             max-width: 618px;
             max-height: 1080px;
             margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
         .question-text {
-            font-size: 20px;
+            font-size: 25px;
             margin-bottom: 20px;
         }
 
@@ -63,8 +65,9 @@
             max-width: 300px;
             margin: 10px auto;
             padding: 12px;
-            font-size: 16px;
+            font-size: 20px;
             text-align: center;
+            font-family: 'brush';
             border: 2px solid #ddd;
             border-radius: 25px;
             background-color: #f9f9f9;
@@ -83,7 +86,6 @@
             max-width: 618px;
             max-height: 1080px;
             margin: 20px 0;
-            border-radius: 10px;
         }
 
         #backToHome {
@@ -118,11 +120,13 @@
     </style>
 </head>
 <body>
+    
     <div class="quiz-container" id="quizContainer">
-        <h1 id="categoryTitle">Category: </h1>
+        <h1 id="categoryTitle" style="color: white; font-size: 0px;"></h1>
         <div class="progress-bar-container" id="progressBarContainer">
             <div class="progress-bar" id="progressBar"></div>
         </div>
+        <Center>
         <div class="question-container">
             <img id="questionImage" class="question-image" src="" alt="Question Image">
             <div id="question" class="question-text">Question will appear here</div>
@@ -133,6 +137,7 @@
         <button id="backToHome" onclick="goBackToHome()">Back to Homepage</button>
         <button id="submitButton" onclick="submitFinalScore()">Submit Final Score</button>
     </div>
+    </Center>
 
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>

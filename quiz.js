@@ -54,49 +54,49 @@ const categories = {
         question: "Why is conserving trees important?",
         options: ["They provide oxygen.", "They consume too much water.", "They attract pests."],
         correctAnswer: 0,
-        image: ""
+        image: "Tree_q1.jpg"
       },
       {
         question: "What can you do to help conserve trees?",
         options: ["Plant more trees", "Cut down old trees", "Ignore the issue"],
         correctAnswer: 0,
-        image: ""
+        image: "Tree_q2.jpg"
       },
       {
         question: "Which of these activities contributes to deforestation?",
         options: ["Logging for timber", "Recycling paper", "Using reusable bags"],
         correctAnswer: 0,
-        image: ""
+        image: "Tree_q3.jpg"
       },
       {
         question: "What is the impact of deforestation on wildlife?",
         options: ["It creates more habitats", "It destroys natural habitats", "It has no effect on wildlife"],
         correctAnswer: 1,
-        image: ""
+        image: "Tree_q4.jpg"
       },
       {
         question: "How do trees help in combating climate change?",
         options: ["They absorb carbon dioxide", "They release methane", "They create smog"],
         correctAnswer: 0,
-        image: ""
+        image: "Tree_q5.jpg"
       },
       {
         question: "What is a benefit of planting trees in urban areas?",
         options: ["Increases pollution", "Provides shade and reduces heat", "Decreases water retention"],
         correctAnswer: 1,
-        image: ""
+        image: "Tree_q6.jpg"
       },
       {
         question: "What should you do to reduce paper waste and conserve trees?",
         options: ["Use more paper products", "Recycle paper", "Burn paper waste"],
         correctAnswer: 1,
-        image: ""
+        image: "Tree_q7.jpg"
       },
       {
         question: "How does tree conservation benefit humans?",
         options: ["It improves air quality", "It reduces water availability", "It increases waste production"],
         correctAnswer: 0,
-        image: ""
+        image: "Tree_q8.jpg"
       }
     ],
       water: [

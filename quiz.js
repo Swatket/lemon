@@ -4,49 +4,49 @@ const categories = {
         question: "Why is it important to sort garbage before disposal?",
         options: ["It reduces environmental pollution.", "It takes more time to do so.", "It helps to reuse materials."],
         correctAnswer: 0,
-        image: ""
+        image: "Garbage_q1.jpg"
       },
       {
         question: "What should go into a recycling bin?",
         options: ["Paper", "Food scraps", "Plastic bottles"],
         correctAnswer: 2,
-        image: ""
+        image: "Garbage_q2.jpg"
       },
       {
         question: "Which of these should go into the compost bin?",
         options: ["Fruit and vegetable peels", "Glass bottles", "Meat scraps"],
         correctAnswer: 0,
-        image: ""
+        image: "Garbage_q3.jpg"
       },
       {
         question: "Where should you dispose of electronic waste, like old phones or computers?",
         options: ["General trash bin", "E-waste collection center", "Recycling bin", "Hazardous waste facility"],
         correctAnswer: 1,
-        image: ""
+        image: "Garbage_q4.jpg"
       },
       {
         question: "What happens when recyclable materials are mixed with non-recyclables?",
         options: ["They are still processed together.", "The recycling process becomes less efficient.", "The non-recyclables contaminate the recyclable materials."],
         correctAnswer: 1,
-        image: ""
+        image: "Garbage_q5.jpg"
       },
       {
         question: "Which material should be discarded as hazardous waste?",
         options: ["Batteries", "Fruit peels", "Plastic bags"],
         correctAnswer: 0,
-        image: ""
+        image: "Garbage_q6.jpg"
       },
       {
         question: "Why is it beneficial to use reusable containers?",
         options: ["They help reduce waste.", "They cost more than disposable containers."],
         correctAnswer: 0,
-        image: ""
+        image: "Garbage_q7.jpg"
       },
       {
         question: "Why should glass and plastic be separated when recycling?",
         options: ["They are processed differently for recycling.", "It makes the recycling process easier.", "It helps prevent contamination."],
         correctAnswer: 0,
-        image: ""
+        image: "Garbage_q8.jpg"
       }
   ],
     tree: [

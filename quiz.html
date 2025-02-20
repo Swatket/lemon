@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erika</title>
+    <link rel="icon" type="image/x-icon" href="Image/Icon/Icon_web.png">
+    <link rel="stylesheet" href="quiz.css">
+    <style>
+        @font-face {
+            font-family: 'brush';
+            src: url('fonts/MgBrushVersion2Regular.otf');
+        }
+
+        body {
+            font-family: 'brush';
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 5px 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: #f3f3f3;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 15px;
+            background-color: #4caf50;
+            border-radius: 10px;
+            transition: width 0.3s;
+        }
+
+        .question-container {
+            margin-top: 20px;
+        }
+
+        .question-image {
+            width: 100%;
+            height: auto;
+            max-width: 618px;
+            max-height: 1080px;
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 25px;
+            margin-bottom: 20px;
+        }
+
+        .answer-button {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px auto;
+            padding: 12px;
+            font-size: 20px;
+            text-align: center;
+            font-family: 'brush';
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            background-color: #f9f9f9;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .answer-button:hover {
+            background-color: #e0e0e0;
+            border-color: #ccc;
+        }
+
+        .summary-image {
+            display: none;
+            max-width: 618px;
+            max-height: 1080px;
+            margin: 20px 0;
+        }
+
+        #backToHome {
+            display: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #backToHome:hover {
+            background-color: #45a049;
+        }
+
+        #submitButton {
+            display: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        #submitButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="quiz-container" id="quizContainer">
+        <h1 id="categoryTitle" style="color: white; font-size: 0px;"></h1>
+        <div class="progress-bar-container" id="progressBarContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <Center>
+        <div class="question-container">
+            <img id="questionImage" class="question-image" src="" alt="Question Image">
+            <div id="question" class="question-text">Question will appear here</div>
+            <div id="answerContainer" class="answer-container">
+            </div>
+        </div>
+        <img id="summaryImage" class="summary-image" src="" alt="Summary Image">
+        <button id="backToHome" onclick="goBackToHome()">Back to Homepage</button>
+        <button id="submitButton" onclick="submitFinalScore()">Submit Final Score</button>
+    </div>
+    </Center>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="quiz.js"></script>
+</body>
+</html>

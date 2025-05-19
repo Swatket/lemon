@@ -157,7 +157,7 @@ function endQuiz() {
   finishMsg.style.fontWeight = "bold";
   finishMsg.style.fontSize = "20px"; 
   finishMsg.style.textAlign = "center"; 
-  finishMsg.textContent = "Thank you for completing the quiz!";
+  finishMsg.textContent = "Thank you for completing the survey!";
 
   // Add centered image
   const finishImg = document.createElement('img');
